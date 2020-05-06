@@ -1,5 +1,6 @@
 import {request} from "./request";
-
+// 封装对首页的数据
+// 封装这样的函数，对首页的请求
 export function getHomeMultidata() {
   return request({
     url: '/home/multidata'

@@ -1,6 +1,7 @@
 <template>
+<!-- 首页 -->
   <div id="home" class="wrapper">
-    <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
+    <nav-bar class="home-nav"><div slot="center">PokemonMall</div></nav-bar>
     <scroll class="content"
             ref="scroll"
             :probe-type="3"
@@ -11,7 +12,7 @@
       <recommend-view :recommends="recommends"/>
       <feature-view/>
       <tab-control class="tab-control"
-                   :titles="['流行', '新款', '精选']"
+                   :titles="['火系', '草系', '水系']"
                    @tabClick="tabClick"/>
       <good-list :goods="showGoods"/>
     </scroll>
@@ -26,6 +27,7 @@
   import FeatureView from './childComps/FeatureView'
 
   import NavBar from 'components/common/navbar/NavBar'
+  // 用的时候在这里用，所以在这里引入
   import TabControl from 'components/content/tabControl/TabControl'
   import GoodList from 'components/content/goods/GoodsList'
   import Scroll from 'components/common/scroll/Scroll'
@@ -36,6 +38,7 @@
   export default {
     name: "Home",
     components: {
+       // 注册组件
       HomeSwiper,
       RecommendView,
       FeatureView,
@@ -45,6 +48,7 @@
       Scroll,
       BackTop
     },
+   
     data() {
       return {
         banners: [],
@@ -129,8 +133,9 @@
   }
 
   .home-nav {
-    background-color: var(--color-tint);
-    color: #fff;
+    background-color:   rgb(9, 104, 182);
+ 
+    color: rgb(243, 245, 247);
 
     position: fixed;
     left: 0;

@@ -1,9 +1,24 @@
 import axios from 'axios'
+// 使用的时候先导入
+// axios({
+//   url:'http://sc.signalping.com/webapi/debug/',
+    // method:'get',
+    // params:{
+    //   type:'pop',
+    //   page:1
+    // }专门针对get请求的参数拼接
+// }).then(res=>{
+//   console.log(res)
+// })
 
 export function request(config) {
-  // 1.创建axios的实例
+  // 1.创建axios的实例,config是对象类型
   const instance = axios.create({
     baseURL: 'http://123.207.32.32:8000',
+    
+
+    // baseURL: 'http://sc.signalping.com',
+    // 服务器的ip,和端口号
     timeout: 5000
   })
 

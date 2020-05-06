@@ -1,4 +1,6 @@
 <template>
+
+<!-- 封装导航栏 -->
   <div class="nav-bar">
     <div class="left"><slot name="left"></slot></div>
     <div class="center"><slot name="center"></slot></div>
@@ -17,6 +19,7 @@
     display: flex;
     height: 44px;
     line-height: 44px;
+    /* 一般都是44 */
     text-align: center;
     box-shadow: 0 1px 1px rgba(100,100,100,.1);
   }
