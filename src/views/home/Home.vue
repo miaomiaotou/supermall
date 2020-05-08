@@ -2,21 +2,21 @@
 <!-- 首页 -->
   <div id="home" class="wrapper">
     <nav-bar class="home-nav"><div slot="center">PokemonMall</div></nav-bar>
-    <scroll class="content"
+    <!-- <scroll class="content"
             ref="scroll"
             :probe-type="3"
             @scroll="contentScroll"
             :pull-up-load="true"
-            @pullingUp="loadMore">
+            @pullingUp="loadMore"> -->
       <home-swiper :banners="banners"/>
       <recommend-view :recommends="recommends"/>
       <feature-view/>
       <tab-control class="tab-control"
-                   :titles="['火系', '草系', '水系']"
+                   :titles="['药物', '精灵球', '工具']"
                    @tabClick="tabClick"/>
       <good-list :goods="showGoods"/>
-    </scroll>
-    <div>呵呵呵呵</div>
+    <!-- </scroll> -->
+    <!-- <div>呵呵呵呵</div> -->
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
   </div>
 </template>
@@ -30,7 +30,7 @@
   // 用的时候在这里用，所以在这里引入
   import TabControl from 'components/content/tabControl/TabControl'
   import GoodList from 'components/content/goods/GoodsList'
-  import Scroll from 'components/common/scroll/Scroll'
+  // import Scroll from 'components/common/scroll/Scroll'
   import BackTop from 'components/content/backTop/BackTop'
 
   import { getHomeMultidata, getHomeGoods } from "network/home"
@@ -45,7 +45,7 @@
       NavBar,
       TabControl,
       GoodList,
-      Scroll,
+      // Scroll,
       BackTop
     },
    
