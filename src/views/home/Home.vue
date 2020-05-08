@@ -16,7 +16,7 @@
                    @tabClick="tabClick"/>
       <good-list :goods="showGoods"/>
     <!-- </scroll> -->
-    <!-- <div>呵呵呵呵</div> -->
+   
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
   </div>
 </template>
