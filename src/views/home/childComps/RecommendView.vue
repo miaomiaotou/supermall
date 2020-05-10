@@ -1,8 +1,8 @@
 <template>
   <div class="recommend">
-    <div v-for="item in recommends" class="recommend-item">
-      <a :href="item.link">
-        <img :src="item.image" alt="">
+    <div v-for="item in recommends" class="recommend-item" :key="item">
+      <a href="item.link">
+        <img src="@/assets/img/home/yusanjia.jpg" alt="">
         <div>{{item.title}}</div>
       </a>
     </div>
@@ -13,6 +13,7 @@
   export default {
     name: "RecommendView",
     props: {
+      // 这里传数据
       recommends: {
         type: Array,
         default() {
@@ -26,6 +27,7 @@
 <style scoped>
   .recommend {
     display: flex;
+    /*  */
     width: 100%;
     text-align: center;
     font-size: 12px;

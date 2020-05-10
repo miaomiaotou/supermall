@@ -4,7 +4,7 @@
     <nav-bar class="home-nav"><div slot="center">PokemonMall</div></nav-bar>
 
 <!-- <router-view></router-view> -->
-
+    <!-- 轮播图 -->
     <Swiper>
       <!-- 引入注册完之后就可以在这里用了 -->
 
@@ -29,11 +29,15 @@
      </Swiper>
    
       <home-swiper :banners="banners"/> 
+
+      <!--  -->
       <recommend-view :recommends="recommends"/>
       <feature-view/>
       <tab-control class="tab-control"
                    :titles="['药物', '精灵球', '工具']"
+
                    @tabClick="tabClick"/>
+                   <!-- <img src="@/assets/img/home/chaomeng_5.jpg"> -->
       <good-list :goods="showGoods"/>
     <!-- </scroll> -->
    
