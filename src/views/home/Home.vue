@@ -108,6 +108,7 @@
           'new': {page: 0, list: []},
           'sell': {page: 0, list: []},
         },
+        // 默认第0页，数据都是0，把数据模型设计好，
         currentType: 'pop',
         isShowBackTop: false
       }
