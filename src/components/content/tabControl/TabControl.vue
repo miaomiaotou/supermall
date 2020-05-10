@@ -1,10 +1,22 @@
 <template>
   <div class="tab-control">
-    <div v-for="(item, index) in titles"
+    <!-- 起名字tab-control -->
+
+    <!-- 根据数组决定几个div ,然后在里边分了小的item起名为tab-control-item,然后把变量给index,然后监听click，保证点击的时候触发效果-->
+
+
+    <!-- <div v-for="items in titles" :key="items">
+   <span>{{item}}</span> --> 
+
+    <div v-for="(item, index) in titles" :key="item"
          class="tab-control-item"
          :class="{active: index === currentIndex}"
-         @click="itemClick(index)">
+         @click="itemClick(index)" >
       <span>{{item}}</span>
+
+
+
+
     </div>
   </div>
 </template>
@@ -13,8 +25,11 @@
   export default {
     name: "TabControl",
     props: {
+      // 用这个的时候要传入的数据
       titles: {
         type: Array,
+      // 传文字，数组类型
+
         default() {
           return []
         }
@@ -24,7 +39,12 @@
       return {
         currentIndex: 0
       }
-    },
+     },
+    // 用变量current记录一下谁选中了
+
+
+
+    // 监听
     methods: {
       itemClick(index) {
         this.currentIndex = index;

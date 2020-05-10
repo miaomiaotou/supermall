@@ -2,37 +2,50 @@
 <!-- 首页 -->
   <div id="home" class="wrapper">
     <nav-bar class="home-nav"><div slot="center">PokemonMall</div></nav-bar>
-
-<!-- <router-view></router-view> -->
+   
     <!-- 轮播图 -->
-    <Swiper>
+    <!-- <Swiper> -->
       <!-- 引入注册完之后就可以在这里用了 -->
-
-      <SwiperItem > 
+      <!-- 这一段封装进了Homeswiper组件 -->
+      <!-- <SwiperItem >  -->
         <!-- 插入的数据来自下边的data数组,也可以插入本地数据 -->
-       <a href="item.link">
+       <!-- <a href="item.link">
         <img src="@/assets/img/home/yusanjia_4.jpg">
       </a>
         </SwiperItem>
-          <SwiperItem > 
+          <SwiperItem >  -->
         <!-- 插入的数据来自下边的data数组,也可以插入本地数据 -->
-       <a href="item.link">
+       <!-- <a href="item.link">
         <img src="@/assets/img/home/yusanjia_2.jpg">
       </a>
         </SwiperItem>
-          <SwiperItem > 
-        <!-- 插入的数据来自下边的data数组,也可以插入本地数据 -->
+          <SwiperItem >  -->
+        <!-- 插入的数据来自下边的data数组,也可以插入本地数据
        <a href="item.link">
         <img src="@/assets/img/home/yusanjia_3.jpg">
       </a>
         </SwiperItem>
      </Swiper>
-   
+    -->
       <home-swiper :banners="banners"/> 
 
-      <!--  -->
+      
       <recommend-view :recommends="recommends"/>
+       
       <feature-view/>
+      <!-- 引进进来 -->
+
+
+      <!-- <ul>li1</ul>
+    <ul>li1</ul>
+    <ul>li1</ul>
+    <ul>li1</ul>
+    <ul>li1</ul>
+    <ul>li1</ul>
+    <ul>li1</ul>这种可以简单粗暴的滚动占位 -->
+   
+      
+
       <tab-control class="tab-control"
                    :titles="['药物', '精灵球', '工具']"
 
@@ -195,6 +208,7 @@
 
   .tab-control {
     position: sticky;
+    /* sticky属性和top做成移动吸顶效果 */
     top: 44px;
     z-index: 9;
   }
