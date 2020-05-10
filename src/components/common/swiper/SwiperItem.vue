@@ -1,6 +1,8 @@
 <template>
+<!-- 轮播图里的小的item -->
   <div class="slide">
-    <slot></slot>
+    <slot>miaomiao</slot>
+    <!-- 预留的插槽，可以往里边插东西 -->
   </div>
 </template>
 

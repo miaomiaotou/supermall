@@ -12,13 +12,16 @@ import axios from 'axios'
 //   console.log(res)
 // })
 
+
+// 
+
+
+
 export function request(config) {
   // 1.创建axios的实例,config是对象类型
   const instance = axios.create({
    
-    
-
-    baseURL: 'http://sc.signalping.com',
+    baseURL: 'https://sc.signalping.com',
     // 服务器的ip,和端口号
     timeout: 5000
   })

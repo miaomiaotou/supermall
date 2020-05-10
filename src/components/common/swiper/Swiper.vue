@@ -1,4 +1,5 @@
 <template>
+<!-- 轮播图封装 -->
     <div id="hy-swiper">
       <div class="swiper" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
         <slot></slot>
@@ -17,6 +18,7 @@
 	export default {
 		name: "Swiper",
     props: {
+      // props对外暴露的属性
       interval: {
 		    type: Number,
         default: 3000

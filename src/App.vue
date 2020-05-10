@@ -7,14 +7,14 @@
 
 <script>
   import MainTabBar from 'components/content/mainTabbar/MainTabBar'
-  import NavBar from 'components/common/navbar/NavBar'
-  // 用的时候在这里用
+  // import NavBar from 'components/common/navbar/Navbar'
+  
 
   export default {
     name: 'app',
     components: {
       MainTabBar,
-      NavBar
+      // NavBar
     }
   }
 </script>

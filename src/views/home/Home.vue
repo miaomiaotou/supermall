@@ -2,13 +2,33 @@
 <!-- 首页 -->
   <div id="home" class="wrapper">
     <nav-bar class="home-nav"><div slot="center">PokemonMall</div></nav-bar>
-    <!-- <scroll class="content"
-            ref="scroll"
-            :probe-type="3"
-            @scroll="contentScroll"
-            :pull-up-load="true"
-            @pullingUp="loadMore"> -->
-      <home-swiper :banners="banners"/>
+
+<!-- <router-view></router-view> -->
+
+    <Swiper>
+      <!-- 引入注册完之后就可以在这里用了 -->
+
+      <SwiperItem > 
+        <!-- 插入的数据来自下边的data数组,也可以插入本地数据 -->
+       <a href="item.link">
+        <img src="@/assets/img/home/yusanjia_4.jpg">
+      </a>
+        </SwiperItem>
+          <SwiperItem > 
+        <!-- 插入的数据来自下边的data数组,也可以插入本地数据 -->
+       <a href="item.link">
+        <img src="@/assets/img/home/yusanjia_2.jpg">
+      </a>
+        </SwiperItem>
+          <SwiperItem > 
+        <!-- 插入的数据来自下边的data数组,也可以插入本地数据 -->
+       <a href="item.link">
+        <img src="@/assets/img/home/yusanjia_3.jpg">
+      </a>
+        </SwiperItem>
+     </Swiper>
+   
+      <home-swiper :banners="banners"/> 
       <recommend-view :recommends="recommends"/>
       <feature-view/>
       <tab-control class="tab-control"
@@ -19,39 +39,52 @@
    
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
   </div>
+  
 </template>
 
 <script>
   import HomeSwiper from './childComps/HomeSwiper'
+  import{Swiper,SwiperItem} from '@/components/common/swiper'
+
+  // 相当于import swiper from './components/common/swiper/Swiper'
+  //       import swiperItem from './components/common/swiper/SwiperItem'
+
   import RecommendView from './childComps/RecommendView'
+
   import FeatureView from './childComps/FeatureView'
 
   import NavBar from 'components/common/navbar/NavBar'
   // 用的时候在这里用，所以在这里引入
   import TabControl from 'components/content/tabControl/TabControl'
+
   import GoodList from 'components/content/goods/GoodsList'
+
   // import Scroll from 'components/common/scroll/Scroll'
   import BackTop from 'components/content/backTop/BackTop'
 
-  import { getHomeMultidata, getHomeGoods } from "network/home"
+  import { getHomeMultidata  } from "network/home"
 
   export default {
     name: "Home",
     components: {
        // 注册组件
-      HomeSwiper,
+      Swiper,
+      SwiperItem,
       RecommendView,
       FeatureView,
       NavBar,
       TabControl,
       GoodList,
+      HomeSwiper,
       // Scroll,
       BackTop
     },
    
     data() {
       return {
+        // result:null,
         banners: [],
+        //result里边的banners
         recommends: [],
         goods: {
           'pop': {page: 0, list: []},
@@ -68,13 +101,25 @@
       }
     },
     created() {
-      // 1.请求多个数据
+      // 1.请求多个数据,然后把数据放进data里的变量里(那个result里)，要不然getHomeMultidata这个函数执行完了，里边的res就没了，就被内存回收了
+      // getHomeMultidata().then(res=>{
+      //   this.result=res;
+          //  this.banners = res.data.banner把result里边的banners放进banners[]里边
+          // 同理 this.recommends = res.data.recommend
+     // 但是接着console.log(this.result)不可以，因为请求数据是异步操作，到这里的时候网络还没有执行完
+      getHomeMultidata().then(res=>{
+        this.result=res;
+           this.banners = res.data.banners
+
+
+      })
       this.getHomeMultidata()
 
       // 2.请求商品数据
-      this.getHomeGoods('pop')
-      this.getHomeGoods('new')
-      this.getHomeGoods('sell')
+    //   this.getHomeGoods('pop')
+
+    //   this.getHomeGoods('new')
+    //   this.getHomeGoods('sell')
     },
     methods: {
       /**

@@ -4,20 +4,15 @@ import {request} from "./request";
 export function getHomeMultidata() {
   return request({
     url: '/webapi/debug/',
+    // /home///'
     
   })
 }
-console.log(request.config)
 
-// export function getHomeGoods(type, page) {
-//   return request({
-//     url: '',
-//     params: {
-//       type,
-//       page
-//     }
-//   })
-// }
+
+export function getHomeGoods() {
+  return null
+}
 
 
 // 函数调用 -> 压入函数栈(保存函数调用过程中所有变量)
