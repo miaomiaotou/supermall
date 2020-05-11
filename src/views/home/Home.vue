@@ -79,7 +79,7 @@
   // import Scroll from 'components/common/scroll/Scroll'
   import BackTop from 'components/content/backTop/BackTop'
 
-  import { getHomeMultidata  } from "network/home"
+  import { getHomeMultidata ,getHomeGoods } from "network/home"
 
   export default {
     name: "Home",
@@ -125,19 +125,30 @@
           //  this.banners = res.data.banner把result里边的banners放进banners[]里边
           // 同理 this.recommends = res.data.recommend
      // 但是接着console.log(this.result)不可以，因为请求数据是异步操作，到这里的时候网络还没有执行完
+
+
+      // 在created函数里
+    //  2.请求多个数据和商品数据
       getHomeMultidata().then(res=>{
         this.result=res;
-           this.banners = res.data.banners
 
+           this.banners = res.data.banners
+           this.recommends = res.data.recommends
+          //  保存数据，一般放进methods里，比如放进getHomeMultidata这个函数里，用的时候直接调用就可以了
 
       })
-      this.getHomeMultidata()
+      this.getHomeMultidata(pop,1).then(res=>{
+         this.result=res;
+           this.banners = res.data.banners
 
-      // 2.请求商品数据
-    //   this.getHomeGoods('pop')
+      })
 
-    //   this.getHomeGoods('new')
-    //   this.getHomeGoods('sell')
+      // 2.用这个函数来请求数据，需要加this，this找最近的，一次性调用三次这个方法，
+      // 
+     this.getHomeGoods('pop')
+
+     this.getHomeGoods('new')
+    this.getHomeGoods('sell')
     },
     methods: {
       /**
@@ -176,9 +187,13 @@
         })
       },
       getHomeGoods(type) {
+        // 动态的传type,page话，每一次请求是原来的page+1
         const page = this.goods[type].page + 1
         getHomeGoods(type, page).then(res => {
           this.goods[type].list.push(...res.data.list)
+          //  把一个数组放进另外一数组里边
+          
+
           this.goods[type].page += 1
 
           this.$refs.scroll.finishPullUp()

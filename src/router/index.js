@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Home from '../views/home/Home'
+import Category from '../views/category/Category'
+import  Cart from '../views/cart/Cart'
+import Profile from '../views/profile/Profile'
 
-const Home = () => import('../views/home/Home')
-const Category = () => import('../views/category/Category')
-const Cart = () => import('../views/cart/Cart')
-const Profile = () => import('../views/profile/Profile')
 
 // 1.安装插件
 Vue.use(VueRouter)
@@ -37,5 +37,6 @@ const router = new VueRouter({
   mode: 'history'
 })
 
+// 输出router
 
 export default router
