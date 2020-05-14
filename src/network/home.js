@@ -9,7 +9,7 @@ export function getHomeMultidata() {
   })
 }
 
-// 请求的时候要告诉type,page，baseulr已经设置好了
+// 请求的时候要告诉type,page，同时baseulr已经设置好了
 export function getHomeGoods(type,page) {
   return request({
     url:'home/data',
@@ -33,15 +33,18 @@ export function getHomeGoods(type,page) {
 
 
 
-// 把一个数组放进另外一个数组里
-// let   nums1 = []
-// const nums2 = [111, 22, 333]
-// 
-// 这样num1 =nums2也行，但是不太好
-// 但是有一个新的
+// 把一个数据放进另外一个数组
+// let totalNums = []
+// const nums1 = [20, 11, 222]
+// 可以直接totalNums = nums1,但是有以下这种情况的时候，如果还是直接赋值了，第一个就没了，所以应该是都往第一个里边塞，用遍历
+// const nums2 = [111, 22, 333]，
+// 用遍历,遍历要塞的数组，
+// for (let n of nums1) { 
+//   totalNums.push(n)
+// }
 
-// for (let n of nums1) {
-//   totalNums.push(n)
-// }
+// totalNums.push(...nums1)
+// totalNums.push(...nums1)
+// ...把nums1里的元素解析出来，依次塞进totalNums里边，
+// Push这个函数可以传递可变对象
 
-// totalNums.push(...nums1)

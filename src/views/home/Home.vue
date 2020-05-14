@@ -191,10 +191,9 @@
         const page = this.goods[type].page + 1
         getHomeGoods(type, page).then(res => {
           this.goods[type].list.push(...res.data.list)
-          //  把一个数组放进另外一数组里边
-          
-
-          this.goods[type].page += 1
+          //  第一次根据type把pop对应的goodslist拿出来，再把res里的list塞进去
+          // 拿到goods[type]这个空的数组了，然后就多了一组数据，就要把page加上1
+           this.goods[type].page += 1
 
           this.$refs.scroll.finishPullUp()
         })
