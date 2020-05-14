@@ -6,7 +6,9 @@
     <!-- 轮播图 -->
     <!-- <Swiper> -->
       <!-- 引入注册完之后就可以在这里用了 -->
-      <!-- 这一段封装进了Homeswiper组件 -->
+
+
+  <!-- 这一段封装进了Homeswiper组件 -->
       <!-- <SwiperItem >  -->
         <!-- 插入的数据来自下边的data数组,也可以插入本地数据 -->
        <!-- <a href="item.link">
@@ -51,7 +53,19 @@
 
                    @tabClick="tabClick"/>
                    <!-- <img src="@/assets/img/home/chaomeng_5.jpg"> -->
-      <good-list :goods="showGoods"/>
+
+
+
+     
+      <!-- 在home里展示出来 -->
+      <GoodList/>
+      
+
+      <!-- 其实应该这么写 -->
+      <!-- <goodList :goods="goods["pop"].list/> 
+      从下边data的goods列表里拿数据过来，赋值给左边的goods，然后goodslist组件就拿到了goods列表  -->
+     
+
     <!-- </scroll> -->
    
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
@@ -75,6 +89,7 @@
   import TabControl from 'components/content/tabControl/TabControl'
 
   import GoodList from 'components/content/goods/GoodsList'
+  // 展示的样式在goodslist，goodlistitem组件里边调
 
   // import Scroll from 'components/common/scroll/Scroll'
   import BackTop from 'components/content/backTop/BackTop'
