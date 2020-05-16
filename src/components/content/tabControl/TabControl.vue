@@ -48,6 +48,7 @@
     methods: {
       itemClick(index) {
         this.currentIndex = index;
+        // 网外边的HOME组件传数据（子传父）用自定义事件$emit，事件是tabclick,参数是index,然后到外边
         this.$emit('tabClick', index)
       }
     }

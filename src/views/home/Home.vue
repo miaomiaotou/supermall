@@ -6,7 +6,9 @@
     <!-- 轮播图 -->
     <!-- <Swiper> -->
       <!-- 引入注册完之后就可以在这里用了 -->
-      <!-- 这一段封装进了Homeswiper组件 -->
+
+
+  <!-- 这一段封装进了Homeswiper组件 -->
       <!-- <SwiperItem >  -->
         <!-- 插入的数据来自下边的data数组,也可以插入本地数据 -->
        <!-- <a href="item.link">
@@ -50,8 +52,22 @@
                    :titles="['药物', '精灵球', '工具']"
 
                    @tabClick="tabClick"/>
-                   <!-- <img src="@/assets/img/home/chaomeng_5.jpg"> -->
-      <good-list :goods="showGoods"/>
+                   <!-- 对应tabcontrol监听点击事件，用 <goodList :goods="goods['pop'].list"/>这种的就是写死了的，
+                                                   换一个选择框点击内容根本不换-->
+
+
+
+     
+      <!-- 在home里展示出来 -->
+      <GoodList/>
+      
+
+      <!-- 其实应该这么写 ,从下边data的goods列表里拿数据过来，赋值给左边的goods，然后goodslist组件就拿到了goods列表 -->
+      <goodList :goods="goods['pop'].list"/> 
+
+      
+     
+
     <!-- </scroll> -->
    
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
@@ -75,11 +91,12 @@
   import TabControl from 'components/content/tabControl/TabControl'
 
   import GoodList from 'components/content/goods/GoodsList'
+  // 展示的样式在goodslist，goodlistitem组件里边调
 
   // import Scroll from 'components/common/scroll/Scroll'
   import BackTop from 'components/content/backTop/BackTop'
 
-  import { getHomeMultidata  } from "network/home"
+  import { getHomeMultidata ,getHomeGoods } from "network/home"
 
   export default {
     name: "Home",
@@ -109,7 +126,10 @@
           'sell': {page: 0, list: []},
         },
         // 默认第0页，数据都是0，把数据模型设计好，
+
+
         currentType: 'pop',
+        // 默认先设置成pop
         isShowBackTop: false
       }
     },
@@ -125,9 +145,15 @@
           //  this.banners = res.data.banner把result里边的banners放进banners[]里边
           // 同理 this.recommends = res.data.recommend
      // 但是接着console.log(this.result)不可以，因为请求数据是异步操作，到这里的时候网络还没有执行完
+
+
+      // 在created函数里
+    //  2.请求多个数据和商品数据
       getHomeMultidata().then(res=>{
         this.result=res;
+
            this.banners = res.data.banners
+<<<<<<< HEAD
        })
       this.getHomeMultidata()
 
@@ -136,12 +162,31 @@
 
       this.getHomeGoods('new')
       this.getHomeGoods('sell')
+=======
+           this.recommends = res.data.recommends
+          //  保存数据，一般放进methods里，比如放进getHomeMultidata这个函数里，用的时候直接调用就可以了
+
+      })
+      this.getHomeMultidata(pop,1).then(res=>{
+         this.result=res;
+           this.banners = res.data.banners
+
+      })
+
+      // 2.用这个函数来请求数据，需要加this，this找最近的，一次性调用三次这个方法，
+      // 
+     this.getHomeGoods('pop')
+
+     this.getHomeGoods('new')
+    this.getHomeGoods('sell')
+>>>>>>> 05628669e0d88277870f35395a9fa55982e5f318
     },
     methods: {
       /**
        * 事件监听相关的方法
        */
       tabClick(index) {
+        // console.log(index)
         switch (index) {
           case 0:
             this.currentType = 'pop'
@@ -174,12 +219,23 @@
         })
       },
       getHomeGoods(type) {
+        // 动态的传type,page话，每一次请求是原来的page+1
         const page = this.goods[type].page + 1
         getHomeGoods(type, page).then(res => {
           this.goods[type].list.push(...res.data.list)
+<<<<<<< HEAD
           // 第一次根据tpye把pop对应的goods的list拿出来，再把res里的list塞进去
           // 拿到goods[type]这个空的数组了，然后就多了一组数据，就要把page加上1
           this.goods[type].page += 1
+=======
+          //  第一次根据type把pop对应的goodslist拿出来，再把res里的list塞进去
+          // 拿到goods[type]这个空的数组了，然后就多了一组数据，就要把page加上1
+           this.goods[type].page += 1
+         
+
+
+     
+>>>>>>> 05628669e0d88277870f35395a9fa55982e5f318
 
           this.$refs.scroll.finishPullUp()
         })
