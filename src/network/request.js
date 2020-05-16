@@ -7,7 +7,7 @@ import axios from 'axios'
     //   type:'pop',
     //   page:1
     // }
-    // 专门针对get请求的参数拼接
+    // params专门针对get请求的参数拼接
 // }).then(res=>{
 //   console.log(res)
 // })

@@ -128,16 +128,14 @@
       getHomeMultidata().then(res=>{
         this.result=res;
            this.banners = res.data.banners
-
-
-      })
+       })
       this.getHomeMultidata()
 
-      // 2.请求商品数据
-    //   this.getHomeGoods('pop')
+      // 2.请求商品数据，调用函数三次
+      this.getHomeGoods('pop')
 
-    //   this.getHomeGoods('new')
-    //   this.getHomeGoods('sell')
+      this.getHomeGoods('new')
+      this.getHomeGoods('sell')
     },
     methods: {
       /**
@@ -179,6 +177,8 @@
         const page = this.goods[type].page + 1
         getHomeGoods(type, page).then(res => {
           this.goods[type].list.push(...res.data.list)
+          // 第一次根据tpye把pop对应的goods的list拿出来，再把res里的list塞进去
+          // 拿到goods[type]这个空的数组了，然后就多了一组数据，就要把page加上1
           this.goods[type].page += 1
 
           this.$refs.scroll.finishPullUp()
