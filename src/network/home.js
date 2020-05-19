@@ -55,7 +55,7 @@ export function getHomeGoods(type,page) {
 //   totalNums.push(n)
 // }
 
-// totalNums.push(...nums1)
+// 另一种方法
 // totalNums.push(...nums1)
 // ...把nums1里的元素解析出来，依次塞进totalNums里边，
 // Push这个函数可以传递可变对象

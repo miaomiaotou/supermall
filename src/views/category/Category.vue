@@ -1,16 +1,18 @@
 <template>
   <div class="wrapper" ref="aaaa">
     <div>
+       <feature-view/>
       <!--1.无论是否设置click:false, button都可以点击-->
-      <button @click="btnClick">按钮</button>
+      <!-- <button @click="btnClick">按钮</button> -->
 
       <!--2.必须设置click:true, 那么div才能监听点击-->
-      <div @click="divClick">呵呵呵呵</div>
+      <div @click="divClick"></div>
 
       <tab-control class="tab-control"
-                   :titles="['药物', '精灵球', '工具']"
+                   :titles="['我御三家反正你也买不到就给你看看吧']"
 
                    @tabClick="tabClick"/>
+      <GoodList/>
     </div>
   </div>
 </template>
@@ -18,11 +20,16 @@
 <script>
   import BScroll from 'better-scroll'
   import TabControl from '../../components/content/tabControl/TabControl'
+   
+  import GoodList from 'components/content/goods/GoodsList'
+  import FeatureView from '../home/childComps/FeatureView'
 
   export default {
     name: "Category",
     components:{
-      TabControl
+      TabControl,
+      GoodList,
+       FeatureView,
     },
     // methods:{
     //     tabClick(index) {

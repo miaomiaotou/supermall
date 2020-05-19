@@ -2,6 +2,13 @@
 <!-- 让大的，遍历小的 -->
 
   <div class="goods">
+    <goods-list-item/>
+   
+   <!-- <img src="@/assets/img/home/01_miaowazhongzi.png" alt="">
+   <img src="@/assets/img/home/02_miaowahua.png" alt="">
+   <img src="@/assets/img/home/03_miaowazhongzi.png" alt="">
+ -->
+
     <!-- <goods-list-item v-for="item in goods" :goods-item="item"/> -->
 <!-- 实际展示的时候不是这样的li，是需要home.vue把数据给过来，然后展示 -->
     <!-- <ul>
@@ -15,8 +22,8 @@
 
 <!-- <good-list :goods="goods["pop"].list/> 之后就把数值给过来了，可以插值表达式用一下 <div>{{goods}}</div>,
 根据这个goods来决定遍历多少个小的item,然后放到div里边展示就可以了(每一个小组件对应一个对象)-->
-<goods-list-item v-for="item in goods" 
-:goods-item="item"/>
+<!-- <goods-list-item v-for="item in goods" 
+:goods-item="item"/> -->
  <!-- 把遍历出来的值放到右边的item，然后给了左边的goods-item -->
 
 
@@ -32,7 +39,7 @@
     components: {
       GoodsListItem
     },
-    // 接受home.vue的数据，先一个空的数组
+    // 接受home.vue的数据，先一个空的数组，props父传子
     props: {
       goods: {
         type: Array,

@@ -52,6 +52,10 @@
       },
       finishPullUp() {
         this.scroll.finishPullUp()
+      },
+      getScrollY(){
+        return this.scroll?this.y:0
+        // 问号是判断y是否有值，有值得话返回this.scroll.y,没有值返回0
       }
     }
   }

@@ -126,7 +126,8 @@
           'sell': {page: 0, list: []},
         },
         // 默认第0页，数据都是0，把数据模型设计好，
-
+        savaY:0,
+        // 设置变量saveY,默认值设为0
 
         currentType: 'pop',
         // 默认先设置成pop
@@ -137,6 +138,18 @@
       showGoods() {
         return this.goods[this.currentType].list
       }
+    },
+    activated(){
+      
+      console.log("activated")
+      this.$refs.scroll.scrollTo(0,this.savaY,0)
+      this.$refs.scroll.refrsh()
+      // 对scroll进行一个刷新
+     
+    },
+    deactivated(){
+      //  这个函数放离开时候的值，要获取
+    this.savaY=this.$refs.scroll.getSrcollY()
     },
     created() {
       // 1.请求多个数据,然后把数据放进data里的变量里(那个result里)，要不然getHomeMultidata这个函数执行完了，里边的res就没了，就被内存回收了
@@ -153,16 +166,6 @@
         this.result=res;
 
            this.banners = res.data.banners
-<<<<<<< HEAD
-       })
-      this.getHomeMultidata()
-
-      // 2.请求商品数据，调用函数三次
-      this.getHomeGoods('pop')
-
-      this.getHomeGoods('new')
-      this.getHomeGoods('sell')
-=======
            this.recommends = res.data.recommends
           //  保存数据，一般放进methods里，比如放进getHomeMultidata这个函数里，用的时候直接调用就可以了
 
@@ -179,7 +182,6 @@
 
      this.getHomeGoods('new')
     this.getHomeGoods('sell')
->>>>>>> 05628669e0d88277870f35395a9fa55982e5f318
     },
     methods: {
       /**
@@ -208,6 +210,11 @@
       loadMore() {
         this.getHomeGoods(this.currentType)
       },
+     
+
+
+
+      },
       /**
        * 网络请求相关的方法
        */
@@ -223,11 +230,6 @@
         const page = this.goods[type].page + 1
         getHomeGoods(type, page).then(res => {
           this.goods[type].list.push(...res.data.list)
-<<<<<<< HEAD
-          // 第一次根据tpye把pop对应的goods的list拿出来，再把res里的list塞进去
-          // 拿到goods[type]这个空的数组了，然后就多了一组数据，就要把page加上1
-          this.goods[type].page += 1
-=======
           //  第一次根据type把pop对应的goodslist拿出来，再把res里的list塞进去
           // 拿到goods[type]这个空的数组了，然后就多了一组数据，就要把page加上1
            this.goods[type].page += 1
@@ -235,13 +237,12 @@
 
 
      
->>>>>>> 05628669e0d88277870f35395a9fa55982e5f318
 
           this.$refs.scroll.finishPullUp()
         })
       }
     }
-  }
+  
 </script>
 
 <style scoped>
