@@ -62,19 +62,17 @@
 <style scoped>
 /* 小的item里边的具体的布局和样式 */
   .goods-item {
-    padding-bottom: 40px;
+     padding-bottom: 40px;
     position: relative;
-
-    width: 20%;
-    height: 5px;
+    width: 48%;
     /* 宽度要是设置固定了，不同的屏幕就会留空白，设置成百分比比较好 */
   }
 
   .goods-item img {
-    width: 100px;
-    height: 100px;
-    /* animation: scaleDraw 5s ease-in-out infinite; */
+    width: 100%;
     border-radius: 5px;
+    /* animation: scaleDraw 5s ease-in-out infinite; */
+    
   }
 
   .goods-info {

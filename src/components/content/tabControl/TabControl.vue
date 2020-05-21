@@ -74,10 +74,11 @@
   }
 
   .active {
-    color: var(--color-high-text);
+    color:  rgb(9, 104, 182);
   }
 
   .active span {
-    border-bottom: 3px solid var(--color-tint);
+    /* border-bottom: 3px solid var(--color-tint); */
+      border-bottom: 3px solid rgb(9, 104, 182);
   }
 </style>

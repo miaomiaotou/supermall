@@ -1,10 +1,10 @@
 <template>
   <div>
     <scroll class="content">
-      <ul>
+      <!-- <ul>
         <li>个人信息1</li>
         
-      </ul>
+      </ul> -->
     </scroll>
   </div>
 </template>
@@ -23,7 +23,7 @@
 <style scoped>
   .content {
     height: 300px;
-    background-color: red;
+    /* background-color: red */
     overflow: hidden;
   }
 </style>
